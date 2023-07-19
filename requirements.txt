@@ -11,4 +11,3 @@ streamlit-echarts
 pandas
 numpy
 matplotlib
-os
