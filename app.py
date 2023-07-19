@@ -31,6 +31,7 @@ def main():
     st.session_state.selected_job = None
     st.session_state.recommend_jobs = None
     st.session_state.similarity_jobs = None
+    st.session_state.jobs = None
     if uploaded_file:
         if st.session_state.recommend_jobs is None:
             st.session_state.recommend_jobs = jaccard.recommend_job(uploaded_file, st.secrets['GPT_KEY'])
@@ -79,7 +80,6 @@ def main():
                     st.table(gangso_df.head())
                 if len(st.session_state.recommend_company) != 0:
                     # with st.expander(label = '일반기업 추천', expanded=True):
-                    print(len(st.session_state.recommend_company))
                     company_df = pd.DataFrame(st.session_state.recommend_company, columns=cols)
                     # company_df['URL'] = company_df['URL'].apply(format_link)
                     st.subheader('기업 기업목록')
