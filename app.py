@@ -34,11 +34,12 @@ def main():
     st.session_state.jobs = None
     if uploaded_file:
         if st.session_state.recommend_jobs is None:
-            st.write(uploaded_file.name)
+            st.write(uploaded_file)
             st.write(StringIO(uploaded_file.getvalue().decode("utf-16")))
             GPT_KEY = st.secrets.KEY.GPT_KEY
             st.session_state.recommend_jobs = jaccard.recommend_job(StringIO(uploaded_file.getvalue().decode("utf-8")), GPT_KEY)
             st.write(st.session_state.recommend_jobs)
+
         if st.session_state.recommend_jobs :
             recommend_jobs = st.session_state.recommend_jobs
             if st.session_state.similarity_jobs is None:
