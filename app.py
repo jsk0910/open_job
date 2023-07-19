@@ -33,7 +33,7 @@ def main():
     st.session_state.jobs = None
     if uploaded_file:
         if st.session_state.recommend_jobs is None:
-            st.write("st")
+            st.write(uploaded_file.read())
             GPT_KEY = st.secrets.KEY.GPT_KEY
             st.session_state.recommend_jobs = jaccard.recommend_job(uploaded_file.read(), GPT_KEY)
             st.write(st.session_state.recommend_jobs)
