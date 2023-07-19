@@ -34,7 +34,7 @@ def main():
     st.session_state.jobs = None
     if uploaded_file:
         if st.session_state.recommend_jobs is None:
-            st.session_state.recommend_jobs = jaccard.recommend_job(uploaded_file, st.secrets.keys.GPT_KEY)
+            st.session_state.recommend_jobs = jaccard.recommend_job(uploaded_file, st.secrets.KEY.GPT_KEY)
         if st.session_state.recommend_jobs :
             recommend_jobs = st.session_state.recommend_jobs
             if st.session_state.similarity_jobs is None:
@@ -70,7 +70,7 @@ def main():
                         st.session_state.clicked_jobNm = job[1]
                         break
             if st.session_state.clicked_regionCd != None and st.session_state.clicked_regionNm != None and st.session_state.clicked_jobCd != None and st.session_state.clicked_jobNm != None:
-                st.session_state.gangso, st.session_state.recommend_company = corp.find_company(st.session_state.clicked_regionCd, st.session_state.clicked_jobCd, st.secrets.keys.MONGO_KEY)
+                st.session_state.gangso, st.session_state.recommend_company = corp.find_company(st.session_state.clicked_regionCd, st.session_state.clicked_jobCd, st.secrets.KEY.MONGO_KEY)
                 cols = ['기업명',' 기업규모 ',' 근로계약 ',' 기업위치 ',' 근무시간' ,'URL']
                 if len(st.session_state.gangso) != 0:
                     # with st.expander(label = '강소기업 추천', expanded=True):
