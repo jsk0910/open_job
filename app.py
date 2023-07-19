@@ -6,6 +6,7 @@ from recommend import jaccard
 from recommend import region as r
 from recommend import company as corp
 from io import StringIO
+import time
 
 def showRegion(regions):
     regionsNm = [reg[1] for reg in regions]
@@ -35,6 +36,8 @@ def main():
     st.session_state.jobs = None
 
     uploaded_file = st.session_state.uploaded_file
+    time.sleep(3)
+    
     if uploaded_file:
         #bytedata = uploaded_file.getvalue()
         #st.write(bytedata)
