@@ -36,7 +36,7 @@ def main():
 
     uploaded_file = st.session_state.uploaded_file
     if uploaded_file:
-        bytedata = uploaded_file.read()
+        bytedata = uploaded_file.getvalue()
         st.write(bytedata)
         if st.session_state.recommend_jobs is None:
             st.write(uploaded_file)
