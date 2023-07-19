@@ -33,11 +33,11 @@ def main():
     st.session_state.similarity_jobs = None
     st.session_state.jobs = None
     if uploaded_file:
+        print("upload")
         if st.session_state.recommend_jobs is None:
             GPT_KEY = st.secrets.KEY.GPT_KEY
             rcjob = jaccard.recommend_job(uploaded_file, GPT_KEY)
             st.session_state.recommend_jobs = rcjob
-            print(st.session_state.recommend_jobs)
         if st.session_state.recommend_jobs :
             recommend_jobs = st.session_state.recommend_jobs
             if st.session_state.similarity_jobs is None:
@@ -47,6 +47,7 @@ def main():
             with st.expander(label="지역 선택", expanded=True):
                 regions = st.session_state.regions
                 showRegion(regions)
+                print('show_regions')
                 if st.session_state.selected_region is not None:
                     print("get region")
         if st.session_state.selected_job is None:
