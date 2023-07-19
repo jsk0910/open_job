@@ -5,6 +5,7 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from recommend import jaccard
 from recommend import region as r
 from recommend import company as corp
+from io import StringIO
 
 def showRegion(regions):
     regionsNm = [reg[1] for reg in regions]
@@ -34,10 +35,9 @@ def main():
     if uploaded_file:
         if st.session_state.recommend_jobs is None:
             st.write(uploaded_file.name)
-            contents = uploaded_file.read()
-            st.write(contents[:].decode())
+            st.write(StringIO(uploaded_file.getvalue().decode("utf-8")))
             GPT_KEY = st.secrets.KEY.GPT_KEY
-            st.session_state.recommend_jobs = jaccard.recommend_job(contents[:].decode(), GPT_KEY)
+            st.session_state.recommend_jobs = jaccard.recommend_job(StringIO(uploaded_file.getvalue().decode("utf-8")), GPT_KEY)
             st.write(st.session_state.recommend_jobs)
         if st.session_state.recommend_jobs :
             recommend_jobs = st.session_state.recommend_jobs
