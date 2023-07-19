@@ -2,7 +2,6 @@ tika==2.6.0
 pymongo
 certifi
 pandas
-json
 openai
 streamlit
 streamlit-folium
@@ -12,5 +11,3 @@ streamlit-echarts
 pandas
 numpy
 matplotlib
-sys
-os
