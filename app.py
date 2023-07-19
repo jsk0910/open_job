@@ -5,8 +5,6 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from recommend import jaccard
 from recommend import region as r
 from recommend import company as corp
-from pathlib import Path
-import tempfile
 
 def showRegion(regions):
     regionsNm = [reg[1] for reg in regions]
@@ -37,9 +35,7 @@ def main():
         print("upload")
         if st.session_state.recommend_jobs is None:
             GPT_KEY = st.secrets.KEY.GPT_KEY
-            with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
-                fp = Path(tmp_file.name)
-            rcjob = jaccard.recommend_job(fp, GPT_KEY)
+            rcjob = jaccard.recommend_job(uploaded_file.read(), GPT_KEY)
             st.session_state.recommend_jobs = rcjob
         if st.session_state.recommend_jobs :
             recommend_jobs = st.session_state.recommend_jobs
