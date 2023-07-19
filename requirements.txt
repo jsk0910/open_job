@@ -12,4 +12,3 @@ pandas
 numpy
 matplotlib
 sys
-os
