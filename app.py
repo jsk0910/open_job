@@ -5,6 +5,7 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from recommend import jaccard
 from recommend import region as r
 from recommend import company as corp
+from streamlit.script_run_context import get_script_run_ctx
 
 
 def showRegion(regions):
