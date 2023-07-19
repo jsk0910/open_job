@@ -25,13 +25,16 @@ def showJob(recommend_jobs, similarity_jobs):
 
 def main():
     st.title("이력서 PDF파일을 통한 직업 추천")
-    uploaded_file = st.file_uploader("Upload a PDF file", type="pdf")
+    upload_file = st.file_uploader("Upload a PDF file", type="pdf")
+    st.session_state.uploaded_file = upload_file
     st.session_state.regions = r.getRegion()
     st.session_state.selected_region = None
     st.session_state.selected_job = None
     st.session_state.recommend_jobs = None
     st.session_state.similarity_jobs = None
     st.session_state.jobs = None
+
+    uploaded_file = st.session_state.uploaded_file
     if uploaded_file:
         if st.session_state.recommend_jobs is None:
             st.write(uploaded_file)
