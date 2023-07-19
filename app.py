@@ -34,7 +34,9 @@ def main():
     st.session_state.jobs = None
     if uploaded_file:
         if st.session_state.recommend_jobs is None:
-            st.session_state.recommend_jobs = jaccard.recommend_job(uploaded_file, st.secrets.KEY.GPT_KEY)
+            GPT_KEY = st.secrets.KEY.GPT_KEY
+            rcjob = jaccard.recommend_job(uploaded_file, GPT_KEY)
+            st.session_state.recommend_jobs = rcjob
             print(st.session_state.recommend_jobs)
         if st.session_state.recommend_jobs :
             recommend_jobs = st.session_state.recommend_jobs
