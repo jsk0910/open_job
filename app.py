@@ -35,7 +35,7 @@ def main():
     if uploaded_file:
         if st.session_state.recommend_jobs is None:
             st.write(uploaded_file)
-            st.write(StringIO(uploaded_file.getvalue().decode("utf-16")))
+            st.write(StringIO(uploaded_file.getvalue().decode("utf-8")))
             GPT_KEY = st.secrets.KEY.GPT_KEY
             st.session_state.recommend_jobs = jaccard.recommend_job(StringIO(uploaded_file.getvalue().decode("utf-8")), GPT_KEY)
             st.write(st.session_state.recommend_jobs)
